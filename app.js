@@ -49,7 +49,7 @@ client.on('message', msg => {
     const pengirim = msg.author
     const pesan = msg.body.toLowerCase()
     console.log(pesan)
-    if (pesan.includes('hallo himsi')) {
+    if (pesan.includes('hallo himsi') || pesan.includes('hello himsi') || pesan.includes('helo himsi') || pesan.includes('halo himsi') ) {
         msg.reply('hallo Juga '+pengirim);
     }else if (pesan.includes('visi himsi') == true) {
         msg.reply('Menjadikan HIMSI sebagai Himpunan yang kreatif, kompetitif, bertanggung jawab dan Berwawasan Global pada tahun 2024')
