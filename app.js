@@ -60,11 +60,14 @@ client.on('message', async msg => {
         if (chat.isGroup) {
             msg.reply(
 `*Group Details*
-Name: ${chat.name}
-Description: ${chat.description}
-Created At: ${chat.createdAt.toString()}
-Created By: ${chat.owner.user}
-Participant count: ${chat.participants.length}
+Nama: ${chat.name}
+Description:
+${chat.description}
+
+dibuat pada: ${chat.createdAt.toString()}
+
+dibuat oleh: ${chat.owner.user}
+Jumlah anggota group : ${chat.participants.length} anggota
             `);
         } else {
             msg.reply('This command can only be used in a group!');
