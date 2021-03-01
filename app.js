@@ -44,17 +44,31 @@ const client = new Client({
 });
 
 
-client.on('message', msg => {
+client.on('message', async msg => {
     console.log(msg)
-    const pengirim = msg.author
     const pesan = msg.body.toLowerCase()
     console.log(pesan)
     if (pesan.includes('hallo himsi') || pesan.includes('hello himsi') || pesan.includes('helo himsi') || pesan.includes('halo himsi') ) {
-        msg.reply('hello Juga '+pengirim);
+        const user = await msg.getContact();
+        msg.reply(` Hai ${user.id.user}`);
     }else if (pesan.includes('visi himsi') || pesan.includes('visi dari himsi')) {
         msg.reply('Menjadikan HIMSI sebagai Himpunan yang kreatif, kompetitif, bertanggung jawab dan Berwawasan Global pada tahun 2024')
     }else if (pesan.includes('apa itu himsi')) {
         msg.reply('HIMSI adalah singkatan dari (Himpunan Mahasiswa Sistem Informasi) berdiri pada tahun 2018 \n \n yang semulanya bernama HIMMI (Himpunan Mahasiswa Management Informatika)')
+    }else if (pesan.includes('info group')) {
+        let chat = await msg.getChat();
+        if (chat.isGroup) {
+            msg.reply(`
+                *Group Details*
+                Name: ${chat.name}
+                Description: ${chat.description}
+                Created At: ${chat.createdAt.toString()}
+                Created By: ${chat.owner.user}
+                Participant count: ${chat.participants.length}
+            `);
+        } else {
+            msg.reply('This command can only be used in a group!');
+        }
     }
     else {
         null
