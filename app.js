@@ -5,6 +5,7 @@ const socketIO = require("socket.io");
 const http = require('http')
 const qrcode = require('qrcode');
 const fs = require('fs');
+const port = process.env.PORT || 8000
 //const { phoneNumberFormatter } = require('./helpers/formatter');
 //const { response } = require('express');
 
@@ -136,6 +137,6 @@ app.post('/send-message', [
 });
 **/
 
-server.listen(8000, function(){
-    console.log('App running on *: 8000');
+server.listen(port, function(){
+    console.log('App running on *:' + port);
 });
