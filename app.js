@@ -48,6 +48,7 @@ client.on('message', async msg => {
     console.log(msg)
     const pesan = msg.body.toLowerCase()
     console.log(pesan)
+    let chat = await msg.getChat();
     if (pesan.startsWith('#')) {
         if (pesan.includes('hallo himsi') || pesan.includes('hello himsi') || pesan.includes('helo himsi') || pesan.includes('halo himsi') || pesan.includes('halo') || pesan.includes('hallo') || pesan.includes('hello'))  {
             const user = await msg.getContact();
@@ -57,7 +58,6 @@ client.on('message', async msg => {
         }else if (pesan.includes('apa itu himsi')) {
             msg.reply('HIMSI adalah singkatan dari (Himpunan Mahasiswa Sistem Informasi) berdiri pada tahun 2018 \n \n yang semulanya bernama HIMMI (Himpunan Mahasiswa Management Informatika)')
         }else if (pesan.includes('info group')) {
-            let chat = await msg.getChat();
             if (chat.isGroup) {
                 msg.reply(
 `*Group Details*
