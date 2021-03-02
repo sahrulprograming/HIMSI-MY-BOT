@@ -1,7 +1,6 @@
-const msg = "hello HIMSI"
-console.log(msg.toLowerCase())
-if (msg.includes('hallo') == true || msg.includes('hello') == true){
-    console.log('Sucses')
-} else {
-    console.log('Gagal')
-}
+let balas = require('./HIMSI/tentang_himsi')
+let pesan = require('./test2')
+pesan = pesan.pesan()
+console.log(pesan)
+balas = balas.pengertian()
+console.log(balas)

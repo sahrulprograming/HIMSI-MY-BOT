@@ -1,14 +1,10 @@
 const { Client, MessageMedia } = require('whatsapp-web.js');
 const express = require('express');
-//const {body, validationResult} = require('express-validator');
 const socketIO = require("socket.io");
 const http = require('http')
 const qrcode = require('qrcode');
 const fs = require('fs');
 const port = process.env.PORT || 8000
-//const { phoneNumberFormatter } = require('./helpers/formatter');
-//const { response } = require('express');
-
 
 const app = express();
 const server = http.createServer(app);
@@ -45,19 +41,32 @@ const client = new Client({
 
 
 client.on('message', async msg => {
+    let himsi = require('./HIMSI/tentang_himsi')
     console.log(msg)
     const pesan = msg.body.toLowerCase()
     console.log(pesan)
     let chat = await msg.getChat();
+    // switch (chat.isGroup) {
+    //     case expression:
+            
+    //         break;
+    //     default:
+            
+    // }
+
+
+
     if (chat.isGroup) {
         if (pesan.startsWith('#')) {
             if (pesan.includes('hallo himsi') || pesan.includes('hello himsi') || pesan.includes('helo himsi') || pesan.includes('halo himsi') || pesan.includes('halo') || pesan.includes('hallo') || pesan.includes('hello'))  {
                 const user = await msg.getContact();
                 msg.reply(` Hai ${user.pushname}`);
-            }else if (pesan.includes('visi himsi') || pesan.includes('visi dari himsi')) {
-                msg.reply('Menjadikan HIMSI sebagai Himpunan yang kreatif, kompetitif, bertanggung jawab dan Berwawasan Global pada tahun 2024')
+            }else if (pesan.includes('visi himsi') || pesan.includes('visi dari himsi') || pesan.includes('visi')) {
+                msg.reply(himsi.visi())
+            }else if (pesan.includes('misi himsi') || pesan.includes('misi dari himsi') || pesan.includes('misi')) {
+                msg.reply(himsi.misi())
             }else if (pesan.includes('apa itu himsi')) {
-                msg.reply('HIMSI adalah singkatan dari (Himpunan Mahasiswa Sistem Informasi) berdiri pada tahun 2018 \n \n yang semulanya bernama HIMMI (Himpunan Mahasiswa Management Informatika)')
+                msg.reply(himsi.pengertian())
             }else if (pesan.includes('info group')) {
                 if (chat.isGroup) {
                     msg.reply(
@@ -65,10 +74,10 @@ client.on('message', async msg => {
                 } else {
                     msg.reply('This command can only be used in a group!');
                 }
-            }else if (pesan.includes('arti logo himsi') || pesan.includes('arti lambang himsi') || pesan.includes('arti dari logo himsi') || pesan.includes('arti dari lambang himsi')) {
-                const media = MessageMedia.fromFilePath('img/himsi/lambang_himsi.jpg');
+            }else if (pesan.includes('arti logo himsi') || pesan.includes('arti lambang himsi') || pesan.includes('arti dari logo himsi') || pesan.includes('arti dari lambang himsi') || pesan.includes('makna lambang himsi') || pesan.includes('makna dari lambang himsi')) {
+                const media = MessageMedia.fromFilePath('HIMSI/img/lambang_himsi.jpg');
                 chat.sendMessage(media);
-                chat.sendMessage('*MAKNA LAMBANG HIMSI* \n \n1. Warna Biru Tua pada garis luar melambangkan kekeluargaan yang tinggi dari pengurus HIMSI UBSI. \n2. Bentuk tiga (3) buah gunung paling atas melambangkan Tridharma Perguruan Tinggi. \n3. Tiga (3) Warna Biru muda dan tulisan Program Studi Sistem Informasi Universitas Bina Sarana Informatika pada lingkaran dalam, menggambarkan kesatuan manusia produktif yaitu mahasiswa pada Program Studi Sistem Informasi dibawah naungan Universitas Bina Sarana Informatika. \n4. Tulisan HIMSI dan Teknologi Informasi pada area putih bagian dalam menggambarkan bahwa HIMSI berasal dari Fakultas Teknologi Informasi. \n5. Background yang transparan, menggambarkan HIMSI UBSI dapat menyesuaikan dan senantiasa mampu beradaptasi terhadap perkembangan ilmu pengetahuan dan Tekhnologi Informasi.')
+                chat.sendMessage(himsi.lambang())
             }
             else {
                 msg.reply('Maaf Belum Tersedia');
@@ -80,20 +89,23 @@ client.on('message', async msg => {
         if (pesan.includes('hallo himsi') || pesan.includes('hello himsi') || pesan.includes('helo himsi') || pesan.includes('halo himsi') || pesan.includes('halo') || pesan.includes('hallo') || pesan.includes('hello'))  {
                 const user = await msg.getContact();
                 msg.reply(` Hai ${user.pushname}`);
-            }else if (pesan.includes('visi himsi') || pesan.includes('visi dari himsi')) {
-                msg.reply('Menjadikan HIMSI sebagai Himpunan yang kreatif, kompetitif, bertanggung jawab dan Berwawasan Global pada tahun 2024')
+            }else if (pesan.includes('visi himsi') || pesan.includes('visi dari himsi') || pesan.includes('visi')) {
+                msg.reply(himsi.visi())
+            }else if (pesan.includes('misi himsi') || pesan.includes('misi dari himsi') || pesan.includes('misi')) {
+                msg.reply(himsi.misi())
             }else if (pesan.includes('apa itu himsi')) {
-                msg.reply('HIMSI adalah singkatan dari (Himpunan Mahasiswa Sistem Informasi) berdiri pada tahun 2018 \n \n yang semulanya bernama HIMMI (Himpunan Mahasiswa Management Informatika)')
+                msg.reply(himsi.pengertian())
             }else if (pesan.includes('info group')) {
                 if (chat.isGroup) {
-                    msg.reply(`Personal`);
+                    msg.reply(
+                    `*Group Details* \nNama : ${chat.name} \nDescription : \n${chat.description} \n \ndibuat pada: ${chat.createdAt.toString()} \ndibuat oleh: ${chat.owner.user} \nJumlah anggota group : ${chat.participants.length} anggota`);
                 } else {
-                    msg.reply('Komentar ini hanya Berfungsi di dalam group!');
+                    msg.reply('This command can only be used in a group!');
                 }
-            }else if (pesan.includes('arti logo himsi') || pesan.includes('arti lambang himsi') || pesan.includes('arti dari logo himsi') || pesan.includes('arti dari lambang himsi')) {
-                const media = MessageMedia.fromFilePath('img/himsi/lambang_himsi.jpg');
+            }else if (pesan.includes('arti logo himsi') || pesan.includes('arti lambang himsi') || pesan.includes('arti dari logo himsi') || pesan.includes('arti dari lambang himsi') || pesan.includes('makna lambang himsi') || pesan.includes('makna dari lambang himsi')) {
+                const media = MessageMedia.fromFilePath('HIMSI/img/lambang_himsi.jpg');
                 chat.sendMessage(media);
-                chat.sendMessage('*MAKNA LAMBANG HIMSI* \n \n1. Warna Biru Tua pada garis luar melambangkan kekeluargaan yang tinggi dari pengurus HIMSI UBSI. \n2. Bentuk tiga (3) buah gunung paling atas melambangkan Tridharma Perguruan Tinggi. \n3. Tiga (3) Warna Biru muda dan tulisan Program Studi Sistem Informasi Universitas Bina Sarana Informatika pada lingkaran dalam, menggambarkan kesatuan manusia produktif yaitu mahasiswa pada Program Studi Sistem Informasi dibawah naungan Universitas Bina Sarana Informatika. \n4. Tulisan HIMSI dan Teknologi Informasi pada area putih bagian dalam menggambarkan bahwa HIMSI berasal dari Fakultas Teknologi Informasi. \n5. Background yang transparan, menggambarkan HIMSI UBSI dapat menyesuaikan dan senantiasa mampu beradaptasi terhadap perkembangan ilmu pengetahuan dan Tekhnologi Informasi.')
+                chat.sendMessage(himsi.lambang())
             }
             else {
                 msg.reply('Maaf Belum Tersedia');
@@ -130,52 +142,6 @@ io.on('connection', function(socket){
         });
     });
 });
-/**
-// cek
-const checkRegisteredNumber = async function(number) {
-    const isRegistered = await client.isRegisteredUser(number);
-    return isRegistered;
-};
-
-// Send Message
-app.post('/send-message', [
-    body('number').notEmpty(),
-    body('message').notEmpty(),
-], async (req, res) => {
-    const errors = validationResult(req).formatWith(({ msg }) => {
-        return msg;
-    }); 
-    if (!errors.isEmpty()) {
-        return res.status(422).json({
-            status: false,
-            message: errors.mapped()
-        })
-    };
-    const number = phoneNumberFormatter(req.body.number);
-    const message = req.body.message;
-
-    const isRegisteredNumber = await checkRegisteredNumber(number);
-
-    if (!isRegisteredNumber) {
-        return res.status(422).json({
-            status: false,
-            message: 'The Phone Number is Not registred'
-        });
-    };
-
-    client.sendMessage(number, message).then(response => {
-        res.status(200).json({
-            status: true,
-            response: response
-        });
-    }).catch(err => {
-        res.status(200).json({
-            status: false,
-            response: err
-        });
-    });
-});
-**/
 
 server.listen(port, function(){
     console.log('App running on *:' + port);
