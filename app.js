@@ -61,16 +61,7 @@ client.on('message', async msg => {
             }else if (pesan.includes('info group')) {
                 if (chat.isGroup) {
                     msg.reply(
-                    `*Group Details*
-                    Nama: ${chat.name}
-                    Description:
-                    ${chat.description}
-
-                    dibuat pada: ${chat.createdAt.toString()}
-
-                    dibuat oleh: ${chat.owner.user}
-                    Jumlah anggota group : ${chat.participants.length} anggota
-                    `);
+                    `*Group Details* \nNama : ${chat.name} \nDescription : \n${chat.description} \n \ndibuat pada: ${chat.createdAt.toString()} \ndibuat oleh: ${chat.owner.user} \nJumlah anggota group : ${chat.participants.length} anggota`);
                 } else {
                     msg.reply('This command can only be used in a group!');
                 }
@@ -95,19 +86,9 @@ client.on('message', async msg => {
                 msg.reply('HIMSI adalah singkatan dari (Himpunan Mahasiswa Sistem Informasi) berdiri pada tahun 2018 \n \n yang semulanya bernama HIMMI (Himpunan Mahasiswa Management Informatika)')
             }else if (pesan.includes('info group')) {
                 if (chat.isGroup) {
-                    msg.reply(
-                    `*Group Details*
-                    Nama: ${chat.name}
-                    Description:
-                    ${chat.description}
-                                        
-                    dibuat pada: ${chat.createdAt.toString()}
-                                        
-                    dibuat oleh: ${chat.owner.user}
-                    Jumlah anggota group : ${chat.participants.length} anggota
-                    `);
+                    msg.reply(`Personal`);
                 } else {
-                    msg.reply('This command can only be used in a group!');
+                    msg.reply('Komentar ini hanya Berfungsi di dalam group!');
                 }
             }else if (pesan.includes('arti logo himsi') || pesan.includes('arti lambang himsi') || pesan.includes('arti dari logo himsi') || pesan.includes('arti dari lambang himsi')) {
                 const media = MessageMedia.fromFilePath('img/himsi/lambang_himsi.jpg');
