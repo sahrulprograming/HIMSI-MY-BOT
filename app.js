@@ -61,15 +61,15 @@ client.on('message', async msg => {
             }else if (pesan.includes('info group')) {
                 if (chat.isGroup) {
                     msg.reply(
-`*Group Details*
-Nama: ${chat.name}
-Description:
-${chat.description}
+                    `*Group Details*
+                    Nama: ${chat.name}
+                    Description:
+                    ${chat.description}
 
-dibuat pada: ${chat.createdAt.toString()}
+                    dibuat pada: ${chat.createdAt.toString()}
 
-dibuat oleh: ${chat.owner.user}
-Jumlah anggota group : ${chat.participants.length} anggota
+                    dibuat oleh: ${chat.owner.user}
+                    Jumlah anggota group : ${chat.participants.length} anggota
                     `);
                 } else {
                     msg.reply('This command can only be used in a group!');
@@ -96,15 +96,15 @@ Jumlah anggota group : ${chat.participants.length} anggota
             }else if (pesan.includes('info group')) {
                 if (chat.isGroup) {
                     msg.reply(
-`*Group Details*
-Nama: ${chat.name}
-Description:
-${chat.description}
-
-dibuat pada: ${chat.createdAt.toString()}
-
-dibuat oleh: ${chat.owner.user}
-Jumlah anggota group : ${chat.participants.length} anggota
+                    `*Group Details*
+                    Nama: ${chat.name}
+                    Description:
+                    ${chat.description}
+                                        
+                    dibuat pada: ${chat.createdAt.toString()}
+                                        
+                    dibuat oleh: ${chat.owner.user}
+                    Jumlah anggota group : ${chat.participants.length} anggota
                     `);
                 } else {
                     msg.reply('This command can only be used in a group!');
