@@ -50,7 +50,6 @@ client.on('message', async msg => {
     console.log(pesan)
     if (pesan.includes('hallo himsi') || pesan.includes('hello himsi') || pesan.includes('helo himsi') || pesan.includes('halo himsi') ) {
         const user = await msg.getContact();
-        console.log(user)
         msg.reply(` Hai ${user.pushname}`);
     }else if (pesan.includes('visi himsi') || pesan.includes('visi dari himsi')) {
         msg.reply('Menjadikan HIMSI sebagai Himpunan yang kreatif, kompetitif, bertanggung jawab dan Berwawasan Global pada tahun 2024')
