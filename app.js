@@ -74,7 +74,7 @@ Jumlah anggota group : ${chat.participants.length} anggota
                 msg.reply('This command can only be used in a group!');
             }
         }else if (pesan.includes('arti logo himsi') || pesan.includes('arti lambang himsi') || pesan.includes('arti dari logo himsi') || pesan.includes('arti dari lambang himsi')) {
-            const media = MessageMedia.fromFilePath('./img/himsi/lambang_himsi.jpg');
+            const media = MessageMedia.fromFilePath('img/himsi/lambang_himsi.jpg');
             chat.sendMessage(media);
             chat.sendMessage('*MAKNA LAMBANG HIMSI* \n \n1. Warna Biru Tua pada garis luar melambangkan kekeluargaan yang tinggi dari pengurus HIMSI UBSI. \n2. Bentuk tiga (3) buah gunung paling atas melambangkan Tridharma Perguruan Tinggi. \n3. Tiga (3) Warna Biru muda dan tulisan Program Studi Sistem Informasi Universitas Bina Sarana Informatika pada lingkaran dalam, menggambarkan kesatuan manusia produktif yaitu mahasiswa pada Program Studi Sistem Informasi dibawah naungan Universitas Bina Sarana Informatika. \n4. Tulisan HIMSI dan Teknologi Informasi pada area putih bagian dalam menggambarkan bahwa HIMSI berasal dari Fakultas Teknologi Informasi. \n5. Background yang transparan, menggambarkan HIMSI UBSI dapat menyesuaikan dan senantiasa mampu beradaptasi terhadap perkembangan ilmu pengetahuan dan Tekhnologi Informasi.')
         }
