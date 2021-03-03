@@ -46,16 +46,6 @@ client.on('message', async msg => {
     const pesan = msg.body.toLowerCase()
     console.log(pesan)
     let chat = await msg.getChat();
-    // switch (chat.isGroup) {
-    //     case expression:
-            
-    //         break;
-    //     default:
-            
-    // }
-
-
-
     if (chat.isGroup) {
         if (pesan.startsWith('#')) {
             if (pesan.includes('hallo himsi') || pesan.includes('hello himsi') || pesan.includes('helo himsi') || pesan.includes('halo himsi') || pesan.includes('halo') || pesan.includes('hallo') || pesan.includes('hello'))  {
@@ -78,6 +68,19 @@ client.on('message', async msg => {
                 const media = MessageMedia.fromFilePath('HIMSI/img/lambang_himsi.jpg');
                 chat.sendMessage(media);
                 chat.sendMessage(himsi.lambang())
+            }else if (msg.from.includes('-1601305154@g.us')) {
+                if (pesan.includes('pendidikan')) {
+                    msg.reply('ini adalah link group div pendidikan DPC Cengkareng : \n \n https://chat.whatsapp.com/IyATMxtJUTdEU5FuFzAiw2')
+                }else if (pesan.includes('koor')) {
+                    msg.reply('ini adalah link group BPH KOOR DPC Cengkareng : \n \n https://chat.whatsapp.com/DZQ8wY7sMyn3kqfyFxkeME')
+                }else if (pesan.includes('kom')) {
+                    msg.reply('ini adalah link group div KOM INFO DPC Cengkareng : \n \n https://chat.whatsapp.com/I7Z5nbF3IJ511pDkv9tsHk')
+                }else if (pesan.includes('rsdm')) {
+                    msg.reply('ini adalah link group div RSDM DPC Cengkareng : \n \n https://chat.whatsapp.com/BvGxwTHd83AL97XqyBl0cz')
+                }
+                else{
+                    msg.reply('Maaf Belum Tersedia');
+                }
             }
             else {
                 msg.reply('Maaf Belum Tersedia');
