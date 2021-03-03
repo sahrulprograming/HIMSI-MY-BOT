@@ -4,6 +4,7 @@ const socketIO = require("socket.io");
 const http = require('http')
 const qrcode = require('qrcode');
 const fs = require('fs');
+const { count } = require('console');
 const port = process.env.PORT || 8000
 
 const app = express();
@@ -41,7 +42,7 @@ const client = new Client({
 
 
 client.on('message', async msg => {
-    let himsi = require('./HIMSI/tentang_himsi')
+    const himsi = require('./app/model/HIMSI/tentang_himsi')
     console.log(msg)
     const pesan = msg.body.toLowerCase()
     console.log(pesan)
