@@ -43,6 +43,7 @@ const client = new Client({
 
 client.on('message', async msg => {
     const himsi = require('../model/HIMSI/tentang_himsi')
+    const dpcckg = require('../model/HIMSI/DPC-Cengkareng/linkgroup') 
     console.log(msg)
     const pesan = msg.body.toLowerCase()
     console.log(pesan)
@@ -71,13 +72,13 @@ client.on('message', async msg => {
                 chat.sendMessage(himsi.lambang())
             }else if (msg.from.includes('-1601305154@g.us')) {
                 if (pesan.includes('pendidikan')) {
-                    msg.reply('ini adalah link group div pendidikan DPC Cengkareng : \n \n https://chat.whatsapp.com/IyATMxtJUTdEU5FuFzAiw2')
+                    msg.reply(dpcckg.pendidikan())
                 }else if (pesan.includes('koor')) {
-                    msg.reply('ini adalah link group BPH KOOR DPC Cengkareng : \n \n https://chat.whatsapp.com/DZQ8wY7sMyn3kqfyFxkeME')
+                    msg.reply(dpcckg.groupbphkoor())
                 }else if (pesan.includes('kom')) {
-                    msg.reply('ini adalah link group div KOM INFO DPC Cengkareng : \n \n https://chat.whatsapp.com/I7Z5nbF3IJ511pDkv9tsHk')
+                    msg.reply(dpcckg.kominfo())
                 }else if (pesan.includes('rsdm')) {
-                    msg.reply('ini adalah link group div RSDM DPC Cengkareng : \n \n https://chat.whatsapp.com/BvGxwTHd83AL97XqyBl0cz')
+                    msg.reply(dpcckg.grouprsdm())
                 }
                 else{
                     msg.reply('Maaf Belum Tersedia');
