@@ -13,7 +13,7 @@ exports.groupbphkoor = () => {
     return balas
 }
 
-exports.groupbphkoor = () => {
+exports.grouppendidikan = () => {
     balas = 'ini adalah link group div pendidikan DPC Cengkareng : \n \n https://chat.whatsapp.com/IyATMxtJUTdEU5FuFzAiw2'
     return balas
 }
