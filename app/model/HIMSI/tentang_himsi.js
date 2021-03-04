@@ -17,3 +17,7 @@ exports.misi = () => {
     balas = '*MISI HIMSI* \n\n1. Meningkatkan kontribusi HIMSI kepada lingkungan kampus serta masyarakat luas terutama di bidang Sistem Informasi. \n\n2.Menciptakan prestasi atau akademisi yang kreatif dan inovatif dari berbagai aspek, baik akademik ataupun non akademik. \n\n3. Menanamkan sikap disiplin dan bertanggung jawab dalam berorganisasi kepada setiap anggota. \n\n4. Menciptakan ikatan yang kuat dan rasa memiliki terhadap Himpinan serta menjadikan HIMSI sebagai keluarga. \n\n5. Menjalin hubungan baik dan kerja sama dengan organisasi mahasiswa lainnya serta menjaga nama baik Himpunan dan Almamater'
     return balas
 }
+
+exports.struktur = () => {
+    balas = ""
+}
